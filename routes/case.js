@@ -13,7 +13,7 @@ caseRouter.get('/cases', getCases);
 
 caseRouter.get("/cases/count", isAuthenticated,hasPermission('count_case'), countCases);
 
-caseRouter.get('/books/:id', getOneCase);
+caseRouter.get('/cases/:id', getOneCase);
 
 caseRouter.patch('/cases/:id', isAuthenticated, hasPermission( 'update_case'), caseIconUpload.single("icon"),updateCase);
 
