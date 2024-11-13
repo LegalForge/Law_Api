@@ -12,7 +12,7 @@ export const loginUserValidator = Joi.object({
     password: Joi.string().required()
 });
 
-export const updateProfileVAlidator = Joi.object({
+export const updateProfileValidator = Joi.object({
     name: Joi.string(),
     avatar: Joi.string()
 });

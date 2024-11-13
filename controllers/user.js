@@ -1,5 +1,9 @@
 import { loginUserValidator, registerUserValidator,updateProfileValidator } from "../validators/user.js";
 import { UserModel } from "../models/user.js";
+import { CaseModel } from "../models/case.js";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import { mailTransporter } from "../utils/mail.js";
 
 // Register,Login,Logout
 export const registerUser = async(req,res,next)=>{
@@ -56,7 +60,7 @@ export const loginUser = async(req,res,next)=>{
         const token = jwt.sign(
             {id:user.id},
             process.env.JWT_PRIVATE_KEY,
-            {expiresIn:'24h'}
+            {expiresIn:'72h'}
         );
         // Respond to request
         res.json({
@@ -87,7 +91,7 @@ export const getUserCases = async (req,res,next)=>{
             skip = 0 } = req.query;
   
         // Fetch all Adverts from database
-        const allAdverts = await AdvertModel.find({
+        const allCases = await CaseModel.find({
             ...JSON.parse(filter),
             user: req.auth.id
         })
@@ -95,7 +99,7 @@ export const getUserCases = async (req,res,next)=>{
         .limit(limit)
         .skip(skip);
         // return response
-        res.status(200).json(allAdverts);
+        res.status(200).json(allCases);
     } catch (error) {
        next(error) ;
     }
