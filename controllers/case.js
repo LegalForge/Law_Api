@@ -10,7 +10,7 @@ export const addCase = async (req, res, next) => {
         //Validate user input
         const { error, value } = addCaseValidator.validate({
             ...req.body,
-            icon: req.file?.filename
+            content: req.file?.filename
         });
         if (error) {
             return res.status(422).json(error);
@@ -34,7 +34,7 @@ export const getCases = async (req, res, next) => {
         // const cases = await find(req.body);
         const { filter = "{}", sort = "{}", limit = 10,
             skip = 0 } = req.query;
-        // Fetch all Adverts from database
+        // Fetch all Cases from database
         const cases = await CaseModel.find(JSON.parse(filter)).sort(JSON.parse(sort)).limit(limit).skip(skip);
         // return response
         res.status(200).json(cases);
@@ -49,7 +49,7 @@ export const countCases = async (req, res, next) => {
     try {
         const { filter = "{}" } = req.query
         // Count case in database
-        const count = await AdvertModel.countDocuments(JSON.parse(filter));
+        const count = await CaseModel.countDocuments(JSON.parse(filter));
         // Respond to request
         res.json({ count });
     } catch (error) {
@@ -73,7 +73,7 @@ export const updateCase = async (req, res, next) => {
 
         const { error, value } = updateCaseValidator.validate({
             ...req.body,
-            icon: req.file?.filename
+            content: req.file?.filename
         });
 
         if (error) {

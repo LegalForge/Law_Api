@@ -3,7 +3,7 @@ import { multerSaveFilesOrg } from "multer-savefilesorg";
 
 export const  localUpload = multer({ dest: "uploads/"});
 
-export const caseIconUpload = multer({
+export const caseContentUpload = multer({
     storage: multerSaveFilesOrg({
         apiAccessToken: process.env.SAVEFILESORG_API_KEY,
         relativePath: "/law-api/cases/*"
