@@ -11,7 +11,7 @@ quizRouter.post('/quizzes', isAuthenticated,hasPermission('add_quiz'),addQuiz );
 
 quizRouter.get('/quizzes', getAllQuiz);
 
-quizRouter.get("/quizzes/count", isAuthenticated,hasPermission('count_quiz'), countQuiz);
+quizRouter.get('/quizzes/count', isAuthenticated,hasPermission('count_quiz'), countQuiz);
 
 quizRouter.get('/quizzes/:id', getOneQuiz);
 

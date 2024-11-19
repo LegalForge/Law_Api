@@ -27,7 +27,7 @@ export const addQuiz = async (req, res, next)=> {
 export const getAllQuiz = async (req,res,next)=>{
     try {
         // Fetch all Adverts from database
-        const allQuiz = await QuizModel.find(req.params);
+        const allQuiz = await QuizModel.find(req.body);
       // return response
         res.status(200).json(allQuiz);  
     } catch (error) {
