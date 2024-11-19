@@ -88,7 +88,7 @@ export const updateCase = async (req, res, next) => {
         if (!caseUpdate) {
             return res.status(404).json('Case not found')
         }
-        return res.status(200).json(value);
+        return res.json(value);
     } catch (error) {
         next(error);
     }
