@@ -81,9 +81,9 @@ export const updateCase = async (req, res, next) => {
         }
 
         const caseUpdate = await CaseModel.findOneAndUpdate({
-            _id: req.params.id,
-            user: req.auth.id
-        }, value, { new: true });
+            _id:req.params.id,
+            user:req.auth.id}, 
+            value, { new: true });
 
         if (!caseUpdate) {
             return res.status(404).json('Case not found')
