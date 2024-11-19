@@ -19,7 +19,7 @@ userRouter.get("/users/me/quizzes",  isAuthenticated,getUserQuiz);
 
 userRouter.post("/users/logout",isAuthenticated,logoutUser);
 
-userRouter.patch("/users/me", isAuthenticated, hasPermission('update_profile'), userAvaterUpload.single('avatar'), updateProfile);
+userRouter.patch("/users/me/:id", isAuthenticated, hasPermission('update_profile'), userAvaterUpload.single('avatar'), updateProfile);
 
 // export Router
 export default userRouter;
