@@ -105,6 +105,26 @@ export const getUserCases = async (req,res,next)=>{
     }
 }
 
+export const getUserQuiz = async (req,res,next)=>{
+    try {
+        const { filter = "{}",sort="{}", limit = 20,
+            skip = 0 } = req.query;
+  
+        // Fetch all Adverts from database
+        const allQuiz = await CaseModel.find({
+            ...JSON.parse(filter),
+            user: req.auth.id
+        })
+        .sort(JSON.parse(sort))
+        .limit(limit)
+        .skip(skip);
+        // return response
+        res.status(200).json(allQuiz);
+    } catch (error) {
+       next(error) ;
+    }
+}
+
 export const logoutUser = (req,res,next)=>{
     res.json({
        message: 'User Logged Out!'
