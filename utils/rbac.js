@@ -7,7 +7,8 @@ export const permissions =[
             'get_profile',
             'get_onequiz',
             'get_allquiz',
-            'update_quiz'
+            'update_quiz',
+            'update_profile'
         ]
     },
 
